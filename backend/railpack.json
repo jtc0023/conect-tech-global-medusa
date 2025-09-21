@@ -20,8 +20,10 @@
         { "src": "package.json", "dest": "package.json" },
         { "src": "yarn.lock", "dest": "yarn.lock" },
         { "src": ".yarnrc.yml", "dest": ".yarnrc.yml" },
+        { "cmd": "yarn set version stable", "customName": "Set Yarn to stable version" },
         { "cmd": "yarn config set nodeLinker node-modules", "customName": "Configure Yarn to use node_modules" },
-        { "cmd": "yarn install --immutable", "customName": "Install dependencies" }
+        { "cmd": "yarn config set enableGlobalCache false", "customName": "Disable global cache" },
+        { "cmd": "yarn install --immutable --check-cache", "customName": "Install dependencies" }
       ],
       "caches": ["yarn", "node-modules"]
     },
