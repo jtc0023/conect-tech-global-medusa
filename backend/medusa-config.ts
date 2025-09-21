@@ -18,6 +18,9 @@ module.exports = defineConfig({
       cookieSecret: process.env.COOKIE_SECRET || "supersecret",
     },
   },
+  admin: {
+    disable: process.env.DISABLE_MEDUSA_ADMIN === "true",
+  },
   modules: {
     [COMPANY_MODULE]: {
       resolve: "./modules/company",
@@ -29,10 +32,39 @@ module.exports = defineConfig({
       resolve: "./modules/approval",
     },
     [Modules.CACHE]: {
-      resolve: "@medusajs/medusa/cache-inmemory",
+      resolve: "@medusajs/medusa/cache-redis",
+      options: {
+        redisUrl: process.env.REDIS_URL,
+      },
+    },
+    [Modules.EVENT_BUS]: {
+      resolve: "@medusajs/medusa/event-bus-redis",
+      options: {
+        redisUrl: process.env.REDIS_URL,
+      },
     },
     [Modules.WORKFLOW_ENGINE]: {
-      resolve: "@medusajs/medusa/workflow-engine-inmemory",
+      resolve: "@medusajs/medusa/workflow-engine-redis",
+      options: {
+        redis: {
+          url: process.env.REDIS_URL,
+        },
+      },
+    },
+    [Modules.LOCKING]: {
+      resolve: "@medusajs/medusa/locking",
+      options: {
+        providers: [
+          {
+            resolve: "@medusajs/medusa/locking-redis",
+            id: "locking-redis",
+            is_default: true,
+            options: {
+              redisUrl: process.env.LOCKING_REDIS_URL || process.env.REDIS_URL,
+            },
+          },
+        ],
+      },
     },
   },
 });

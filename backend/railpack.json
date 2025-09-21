@@ -43,7 +43,10 @@
     "COOKIE_SECRET",
     "STORE_CORS",
     "ADMIN_CORS",
-    "AUTH_CORS"
+    "AUTH_CORS",
+    "MEDUSA_WORKER_MODE",
+    "DISABLE_MEDUSA_ADMIN",
+    "LOCKING_REDIS_URL"
   ],
   "deploy": {
     "base": {
