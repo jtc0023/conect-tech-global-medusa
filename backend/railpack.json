@@ -21,10 +21,8 @@
         { "src": "yarn.lock", "dest": "yarn.lock" },
         { "src": ".yarnrc.yml", "dest": ".yarnrc.yml" },
         { "cmd": "corepack enable", "customName": "Enable Corepack" },
-        { "cmd": "corepack prepare yarn@4.3.1 --activate", "customName": "Use Yarn 4.3.1" },
-        { "cmd": "yarn config set nodeLinker node-modules", "customName": "Configure Yarn to use node_modules" },
-        { "cmd": "yarn config set enableGlobalCache false", "customName": "Disable global cache" },
-        { "cmd": "yarn install --check-cache", "customName": "Install dependencies" }
+        { "cmd": "corepack prepare yarn@1.22.22 --activate", "customName": "Use Yarn 1.22.22" },
+        { "cmd": "yarn install --frozen-lockfile", "customName": "Install dependencies (frozen lockfile)" }
       ],
       "caches": ["yarn", "node-modules"]
     },
