@@ -2,10 +2,10 @@
 FROM node:20-alpine
 
 # Set working directory
-WORKDIR /server/backend
+WORKDIR /backend/server
 
 # Copy package files and npm config
-COPY package.json package-lock.json ./
+COPY /package.json /package-lock.json ./
 
 # Install all dependencies using npm
 RUN npm install
