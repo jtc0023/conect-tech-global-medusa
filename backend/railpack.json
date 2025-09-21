@@ -20,6 +20,7 @@
         { "src": "package.json", "dest": "package.json" },
         { "src": "yarn.lock", "dest": "yarn.lock" },
         { "src": ".yarnrc.yml", "dest": ".yarnrc.yml" },
+        { "cmd": "yarn config set nodeLinker node-modules", "customName": "Configure Yarn to use node_modules" },
         { "cmd": "yarn install --immutable", "customName": "Install dependencies" }
       ],
       "caches": ["yarn", "node-modules"]
