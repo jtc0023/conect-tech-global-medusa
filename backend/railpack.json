@@ -16,27 +16,20 @@
   },
   "steps": {
     "install": {
-      "inputs": [
-        {
-          "local": true,
-          "include": ["package.json", "yarn.lock", ".yarnrc.yml"]
-        }
-      ],
       "commands": [
+        { "src": "package.json", "dest": "package.json" },
+        { "src": "yarn.lock", "dest": "yarn.lock" },
+        { "src": ".yarnrc.yml", "dest": ".yarnrc.yml" },
         { "cmd": "yarn install --frozen-lockfile", "customName": "Install dependencies" }
       ],
       "caches": ["yarn", "node-modules"]
     },
     "build": {
       "inputs": [
-        { "step": "install" },
-        {
-          "local": true,
-          "include": ["."],
-          "exclude": ["node_modules", ".env*", "static"]
-        }
+        { "step": "install" }
       ],
       "commands": [
+        { "src": ".", "dest": ".", "exclude": ["node_modules", ".env*", "static"] },
         { "cmd": "yarn build", "customName": "Build Medusa backend" }
       ]
     }
